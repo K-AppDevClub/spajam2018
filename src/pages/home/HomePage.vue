@@ -9,7 +9,7 @@
 
 <template>
   <v-ons-page>
-    <navbar></navbar>
+  <navbar></navbar>
   <div class='page-content' align='center'>
     <v-ons-list> 
       <v-ons-list-header>
@@ -42,6 +42,7 @@ import CreatePlan from '../../pages/create-plan/CreatePlan';
 import RegionPage from '../../pages/region/Region';
 import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
+import Chat from '../../components/chat/Chat';
 import Config from '../../config/Config';
 
 export default {
@@ -49,6 +50,7 @@ export default {
   components: {
     LoadingIndicator,
     Navbar,
+    Chat,
   },
   methods: {
     goCreate() {
