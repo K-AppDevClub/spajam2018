@@ -54,6 +54,6 @@
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2">
         <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO" />
     </plugin>
-    <engine name="android" spec="^7.1.0" />
     <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^7.0.0" />
 </widget>
