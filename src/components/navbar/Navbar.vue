@@ -10,6 +10,10 @@
   ons-list-item {
     cursor: pointer;
   }
+  ons-button {
+    color: white;
+    font-weight: 600;
+  }
 </style>
 
 <template>
@@ -19,8 +23,16 @@
         <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
       </v-ons-toolbar-button>
     </div>
+    <div v-if="navType=='brank'" class="left">
+    </div> 
     <div v-else-if="navType=='back'" class="left">
-      <v-ons-back-button>戻る</v-ons-back-button>
+      <div v-if="backType=='router'" class="left">
+        <!-- <v-ons-back-button modifier="quiet" @click="backHome"><div class="back">戻る</div></v-ons-back-button> -->
+        <v-ons-button modifier="quiet" @click="backHome"><div class="back">戻る</div></v-ons-button>
+      </div>
+      <div v-else class="left">
+        <v-ons-back-button>戻る</v-ons-back-button>
+      </div>
     </div>
     <div class="center" style="font-size: 15px;font-weight:800;">{{ msg }}</div>
   </v-ons-toolbar>
@@ -36,10 +48,16 @@ export default {
     navType: {
       default: 'menu',
     },
+    backType: {
+      default: 'onsen',
+    },
   },
   methods: {
     toggleMenu() {
       this.$store.commit('toggleMenu', true);
+    },
+    backHome() {
+      this.$router.go(-1);
     },
   },
 };

@@ -30,8 +30,22 @@
     //
     function onLoad() {
       console.log("on loaded")
+      var agent = navigator.userAgent;  
+      console.log(agent)
+      // if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){  
+      //   $.ajax({  
+      //     url: '読み込みたいスマホ用のJSファイルパス',  
+      //     dataType: 'script',  
+      //     cache: false  
+      //   });  
+      // }else{  
+      //   $.ajax({  
+      //     url: '読み込みたいPC用のJSファイルパス',  
+      //     dataType: 'script',  
+      //     cache: false  
+      //   });  
+      // }  
       document.addEventListener("deviceready", onDeviceReady, false);
-      console.log(device)
     }
 
     // device APIs are available

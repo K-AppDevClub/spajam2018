@@ -7,10 +7,11 @@ import Vue from 'vue';
 import VueOnsen from 'vue-onsenui';
 import VueRouter from 'vue-router';
 import axios from 'axios';
-import VueAxios from 'vue-axios';
+import VueAxios from 'vue-axios';import ActionCable from 'actioncable';
 import 'onsenui/css/onsenui.css';
 import App from './App';
 import routes from './routes';
+const cable = ActionCable.createConsumer('wss:k-appdev.com:3010/cable');
 
 import 'onsenui/css/onsen-css-components.css';
 // import '../static/css/onsen-css-components-pink.min.css';
@@ -27,6 +28,7 @@ Vue.use(VueGoogleMaps, {
 Vue.use(VueOnsen);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.prototype.$cable = cable;
 
 const router = new VueRouter({
   mode: 'hash',
