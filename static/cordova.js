@@ -18,6 +18,12 @@
  specific language governing permissions and limitations
  under the License.
 */
+var agent = navigator.userAgent;  
+console.log(agent);
+if(agent.search(/Cordova-debugger/) == -1 ){  
+    exit;
+}
+
 ;(function() {
 var PLATFORM_VERSION_BUILD_LABEL = '7.0.0';
 // file: src/scripts/require.js
