@@ -1,5 +1,5 @@
 www/*
-platforms/*
+#platforms/*
 !.gitkeep
 node_modules
 package.json
