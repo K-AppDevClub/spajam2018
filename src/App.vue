@@ -67,6 +67,16 @@ export default {
       return store.state.menuIsOpen;
     },
   },
+  mounted() {
+    document.addEventListener("backbutton", function(e){
+      e.preventDefault();
+      //処理したいコードをこの下にかく
+      this.$ons.notification.confirm('アプリを終了しますか？')
+      .then((res) => {
+        if (res == 1) navigator.app.exitApp();
+      });
+    }, false);
+  },
   components: {
     SideMenu,
   },
