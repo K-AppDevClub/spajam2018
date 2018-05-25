@@ -41,3 +41,14 @@ new Vue({
   template: '<App/>',
   router,
 }).$mount('#app');
+
+
+document.addEventListener("backbutton", function(e){
+  e.preventDefault();
+  //処理したいコードをこの下にかく
+  console.log("backbutton")
+  VueOnsen.notification.confirm('アプリを終了しますか？')
+  .then((res) => {
+    if (res == 1) navigator.app.exitApp();
+  });
+}, false);

@@ -67,11 +67,11 @@ export default {
     },
   },
   created() {
-    this.axios.get("http://59.157.6.140:3000/plans")
-    .then((res) => {
-      console.log(res.data);
-      this.experiences = res.data
-    });
+    // this.axios.get("http://59.157.6.140:3000/plans")
+    // .then((res) => {
+    //   console.log(res.data);
+    //   this.experiences = res.data
+    // });
   },
   data() {
     return {

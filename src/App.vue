@@ -68,14 +68,25 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener("backbutton", function(e){
-      e.preventDefault();
-      //処理したいコードをこの下にかく
-      this.$ons.notification.confirm('アプリを終了しますか？')
-      .then((res) => {
-        if (res == 1) navigator.app.exitApp();
+    var ons = this.$ons
+    ons.ready(function() {
+      console.log("ons ready")
+      if(typeof device === 'undefined'){
+        console.log("waiting device ")
+        document.addEventListener("deviceready", onDeviceReady, false);
+      }else{
+        console.log("device already!")
+      }
+      ons.disableDeviceBackButtonHandler();
+      ons.setDefaultDeviceBackButtonListener(function(event) {
+        ons.notification.confirm('Do you want to close the app?') // ユーザー側に確認します。
+        .then(function(index) {
+          if (index === 1) { // OK が押された場合
+            navigator.app.exitApp(); // アプリを終了します。
+          }
+        });
       });
-    }, false);
+    });
   },
   components: {
     SideMenu,

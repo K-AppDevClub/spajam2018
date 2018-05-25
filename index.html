@@ -22,9 +22,27 @@
   <meta name="msapplication-TileImage" content="./static/img/icons/msapplication-icon-144x144.png">
   <meta name="msapplication-TileColor" content="#000000">
   <link rel="stylesheet" href="./static/css/spinner.css">
+  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+      console.log("on loaded")
+      document.addEventListener("deviceready", onDeviceReady, false);
+      console.log(device)
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+      console.log("device ready")
+    }
+
+  </script>
 </head>
 
-<body>
+<body onload="onLoad()">
   <div id="app">
     <div class="spinner-container">
       <div class="spinner">
