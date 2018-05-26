@@ -9,7 +9,7 @@
 
 <template>
   <v-ons-page>
-    <navbar navType="blank" msg="シェイク"></navbar>
+    <navbar navType="blank" msg="ShakeLoud"></navbar>
     <ons-card>
       <v-ons-list-item>
         <span style="margin-right:15px;">ユーザー名: </span>

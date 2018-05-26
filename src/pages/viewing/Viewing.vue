@@ -21,7 +21,7 @@
 <template>
   <ons-page>
     <br><br>
-    <navbar navType="blank" msg="観戦モード"></navbar>
+    <navbar navType="back" backType="router" msg="観戦モード"></navbar>
     <ObserveBattle :x="judgePoint"/>
   </ons-page>
 </template>
