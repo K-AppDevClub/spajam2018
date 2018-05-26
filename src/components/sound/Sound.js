@@ -44,7 +44,6 @@ export default {
 
     whenGetUserMedia(stream){
       // 音声取得関連
-      //  this.startMediaRecording(stream)
 
       var scriptProcessor = this.audioContext.createScriptProcessor(this.bufferSize, 1, 1);
       var mediastreamsource = this.audioContext.createMediaStreamSource(stream);

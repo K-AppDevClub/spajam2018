@@ -1,18 +1,17 @@
 <style>
 .bar {
-    background: red;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+  background: red;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
 }
 </style>
 
 <template>
-	<div id="app">
-    	<div v-bind:style="{ height: height + 'px' }" class="bar" style="display: inline-block"></div>
-    	<div class="bar bar2" style="display: inline-block"></div>
-			<br>
-    	<input class="range" v-model="height" type="range" min="0" value="30" max="1000" step="1" v-on:change="animate">
+	<div id="app" style="width=200 height=500 background=black">
+    <div v-bind:style="{ height: height * -1 + 'px' }" class="bar" style="display: inline-block"></div>
+		<br>
+    <input class="range" v-model="height" type="range" min="0" value="30" max="1000" step="1">
 	</div>
 </template>
 
