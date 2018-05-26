@@ -7,6 +7,7 @@
     <h1> {{ user_name }} </h1>
     <v-ons-button @click="startRecording()">開始</v-ons-button>
     <v-ons-button @click="endRecording()">停止</v-ons-button>
+    <v-ons-button @click="startBeep()">beep</v-ons-button>
     <br>
     <p> {{ this.rounded_score }} </p>
     <p> {{ this.sum }} </p>
@@ -22,11 +23,12 @@ import Bar from '../../components/bar/Bar'
 import acceleration from '../../components/acceleration/acceleration.js'
 import Chat from '../../components/chat/Chat.js'
 import Sound from '../../components/sound/Sound.js'
+import Beep from '../../components/sound/beep.js'
 
 
 export default {
   name: 'play-room',
-  mixins: [acceleration, Chat, Sound],
+  mixins: [acceleration, Chat, Sound, Beep],
   
   components: {
 		Navbar,
