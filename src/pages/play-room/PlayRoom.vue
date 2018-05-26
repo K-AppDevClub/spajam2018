@@ -11,9 +11,12 @@
 
 <script>
 import Navbar from '../../components/navbar/Navbar';
+import acceleration from '../../components/acceleration/acceleration'
 
 export default {
   name: 'play-room',
+  extends: acceleration,
+  
   components: {
     Navbar,
 	},
