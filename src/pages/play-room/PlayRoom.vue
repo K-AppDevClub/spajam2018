@@ -65,7 +65,7 @@ export default {
       this.startRecording();
       setTimeout(()=>{
         this.melody.stop();
-      },250)
+      },300)
     },
     stopGame() {
       this.isPlaying = false;
