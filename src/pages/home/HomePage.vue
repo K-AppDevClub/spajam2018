@@ -78,6 +78,7 @@ export default {
   data() {
     return {
       makeurl:`https://k-appdev.com:3010/rooms`, 
+      x: 0,
       //joinurl:`https://k-appdev.com:3010/rooms/${join_id}`,
       room_id: '',
       join_id: '',
