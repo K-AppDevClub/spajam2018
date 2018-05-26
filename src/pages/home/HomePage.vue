@@ -5,7 +5,6 @@
 .body {
   margin-top: 50px;
 }
-
 </style>
 
 <template>

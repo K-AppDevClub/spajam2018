@@ -1,9 +1,17 @@
 <template>
   <ons-page>
     <navbar navType="back" backType="router" :msg="room_id"></navbar>
-    <h1> {{ user_name }}:{{ my_score }}</h1>
-    <h1> {{ enemy_name }}: {{ enemy_score }}</h1>
-    <v-ons-button @click="startBeep()">beep</v-ons-button>
+    <v-ons-card>
+      <v-ons-row>
+        <v-ons-col>
+          <h3 style="text-align:center;"> {{ user_name }}:{{ my_score }}</h3>
+        </v-ons-col>
+        <v-ons-col>
+          <h3 style="text-align:center;"> {{ enemy_name }}: {{ enemy_score }}</h3>
+        </v-ons-col>
+      </v-ons-row>
+    </v-ons-card>
+    <ScoreColor v-bind:color="judgePoint"/>
     <br>
     <v-ons-modal :visible="!isPlaying">
       <p v-if="isReady" style="text-align: center; font-size:50px">
@@ -23,7 +31,7 @@
 
 <script>
 import Navbar from '../../components/navbar/Navbar';
-import Bar from '../../components/bar/Bar'
+import ScoreColor from '../../components/bar/Bar'
 import acceleration from '../../components/acceleration/acceleration.js'
 import Chat from '../../components/chat/Chat.js'
 import Sound from '../../components/sound/Sound.js'
@@ -34,23 +42,15 @@ export default {
   mixins: [acceleration, Chat, Sound, Beep],
   
   components: {
-		Navbar,
-		Bar,
+    Navbar,
+    ScoreColor,
 	},
 	data(){
 		return{
       modalVisible: true,
       countdown_timer: null,
       countdown_num: 3,
-
-      total_score: 0,
-      total_score2: 0,
-      player1:'hamae',
-      player2:'yaise',
-      sound_score1:100,
-      sound_score2:200,
-      shake_score1:800,
-      shake_score2:700,
+      judgeCounter: 0,
 		}
   },
   methods: {
@@ -64,21 +64,39 @@ export default {
       this.isGetAcceleration = true;
       this.startRecording();
     },
+    stopGame() {
+      this.isPlaying = false;
+      this.isGetAcceleration = false;
+      this.endRecording();
+    },
     goResult() {
       this.total_score = this.rounded_score + this.sum
       this.$router.push({ name: 'result' ,params: { 
-        //score: 1,
-        player1:this.player1,
-        player2:this.player2,
-        total_score1: this.total_score, 
-        total_score2: this.total_score2,
-        sound_score1: this.sound_score1,
-        sound_score2: this.sound_score2,
-        shake_score1: this.shake_score1,
-        shake_score2: this.shake_score2,
+        player1:this.user_name,
+        player2:this.enemy_name,
+        total_score1: this.my_score,
+        total_score2: this.enemy_score,
       } })
     },
- 
+  },
+  computed: {
+    judgePoint(){
+      var rate = this.my_score / this.enemy_score * 100;
+      var threshold = 120;
+      console.log(rate);
+      console.log(this.judgeCounter);
+      if(rate>threshold || rate < rate/threshold){
+        this.judgeCounter += 1;
+        if(this.judgeCounter>50){
+          this.stopGame();
+          // this.goResult();
+          this.messageChannel.perform('end_game');
+        }
+      }else{
+        this.judgeCounter = 0;
+      }
+      return rate;
+    },
   },
   watch: {
     isReady: function(val){
