@@ -1,9 +1,11 @@
 <template>
   <div>
     <h1 :x="x">{{ x }}</h1>
-    <canvas ref="canvas" width="100%" height="50%"/>
+    <button @click="imgDraw">hoge</button>
+    <canvas ref="canvas" :width="500" :height="500"/>
     <br>
-    <input class="range" v-model="x" type="range" min="0" value="30" max="1000" step="1" v-on:change="animate">
+    <input class="range" v-model="x" type="range" min="0" value="30" max="1000" step="1">
+
   </div>
 </template>
 
@@ -15,30 +17,27 @@ export default {
     return {
       x: 0,
       y: 0,
-      width: 32,
-      height: 32,
+      width: 200,
+      height: 200,
+      src: require("../../../images/spanyan1.png"),
+      ctx: null,
+      img: new Image()
     }
   },
-  
   mounted(){
-    this.imgDraw();
+    this.InituialSetting
   },
+
   methods:{
-    animate(){
-      anime({
-        targets: '.bar2',
-        duration: 1500,
-        elasticity: 400,
-        x: this.x
-      });
+    InituialSetting(){
+      this.ctx = this.$refs.canvas.getContext("2d");
+      this.img = this.src
+      
     },
 
     imgDraw(){
-      var ctx = this.$refs.canvas.getContext("2d")
-      var img = new Image()
-      var url = URL.createObjectURL("../../../images/spanyan1.png")
-      img.src = url
-      ctx.drawImage(img , this.x. this.y);
+      this.ctx.drawImage(this.img , this.x, this.y, 32, 32);
+      this.x += 1;
     }
   }
 }

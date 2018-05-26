@@ -1,41 +1,54 @@
 <style>
-.bar {
-    background: red;
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+.board {
+  margin: 50px;
+  background-color: rgb(204, 211, 235);
+  width: 500px;
+  height: 500px;
 }
 </style>
 
 <template>
-	<div id="app">
-    	<div v-bind:style="{ height: height + 'px' }" class="bar" style="display: inline-block"></div>
-    	<div class="bar bar2" style="display: inline-block"></div>
-			<br>
-    	<input class="range" v-model="height" type="range" min="0" value="30" max="1000" step="1" v-on:change="animate">
+	<div>
+  	<div v-bind:style="{ background: 'rgb('+ red +','+ green +',' + blue + ')' }" class="board"></div>
+    <!-- <input class="range" v-model="color" type="range" min="0" value="30" max="512" step="1" v-on:change="change"> -->
+		<!-- <p>{{ color }}</p>		 -->
 	</div>
 </template>
 
 <script>
 export default {
+	props:{
+		color:{
+			default: 100
+		},
+	},
 	data(){
 		return{
-		// width: 500,
-		height: 500,			
+		// color: 100,
+		// r: 0,
+		// g: 0,
+		// b: 0,
 		}
 	},
+	computed:{
+		red(){
+			return (this.color<255) ? 255-this.color : 0;
+		},
+		green(){
+			return 255-Math.abs(255-this.color);
+		},
+		blue(){
+			return (this.color>255) ? this.color-255 : 0;
+		},
+	},
 	methods:{
-		animate(){
-			this.$anime({
-				targets: '.bar2',
-				duration: 1000,
-				// easing: 'easeInSine',
-				elasticity: 200,
-				// width: this.width
-				height: this.height
-			});
-		}
-	}
+		// change(){
+		// 	var i = this.color;
+		// 	this.r = (i<255) ? 255-i : 0;
+		// 	this.g = 255-Math.abs(255-i);
+		// 	this.b = (i>255) ? i-255 : 0;
+		// },
+	},
 }
 </script>
 

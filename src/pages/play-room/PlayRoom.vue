@@ -3,6 +3,7 @@
     <navbar navType="back" backType="router" :msg="room_id"></navbar>
     <h1> {{ user_name }}:{{ my_score }}</h1>
     <h1> {{ enemy_name }}: {{ enemy_score }}</h1>
+    <v-ons-button @click="startBeep()">beep</v-ons-button>
     <br>
     <v-ons-modal :visible="!isPlaying">
       <p v-if="isReady" style="text-align: center; font-size:50px">
@@ -24,10 +25,11 @@ import Bar from '../../components/bar/Bar'
 import acceleration from '../../components/acceleration/acceleration.js'
 import Chat from '../../components/chat/Chat.js'
 import Sound from '../../components/sound/Sound.js'
+import Beep from '../../components/sound/beep.js'
 
 export default {
   name: 'play-room',
-  mixins: [acceleration, Chat, Sound],
+  mixins: [acceleration, Chat, Sound, Beep],
   
   components: {
 		Navbar,
