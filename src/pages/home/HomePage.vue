@@ -5,14 +5,11 @@
 .body {
   margin-top: 50px;
 }
-
 </style>
 
 <template>
   <v-ons-page>
     <navbar navType="blank" msg="シェイク"></navbar>
-    <observe-battle :x="x"/>
-    <input class="range" v-model="x" type="range" min="0" value="0" max="512" step="2">
     <ons-card>
       <v-ons-list-item>
         <span style="margin-right:15px;">ユーザー名: </span>

@@ -1,6 +1,5 @@
 <style>
 .board {
-  margin: 50px;
   background-color: rgb(204, 211, 235);
   width: 500px;
   height: 500px;
@@ -9,9 +8,9 @@
 
 <template>
 	<div>
-  	<div v-bind:style="{ background: 'rgb('+ red +','+ green +',' + blue + ')' }" class="board"></div>
-    <!-- <input class="range" v-model="color" type="range" min="0" value="30" max="512" step="1" v-on:change="change"> -->
-		<!-- <p>{{ color }}</p>		 -->
+		<v-ons-row>
+			<v-ons-col v-bind:style="{ background: 'rgb('+ red +','+ green +',' + blue + ')' }" class="board"></v-ons-col>
+		</v-ons-row>
 	</div>
 </template>
 
@@ -24,10 +23,6 @@ export default {
 	},
 	data(){
 		return{
-		// color: 100,
-		// r: 0,
-		// g: 0,
-		// b: 0,
 		}
 	},
 	computed:{
@@ -42,13 +37,12 @@ export default {
 		},
 	},
 	methods:{
-		// change(){
-		// 	var i = this.color;
-		// 	this.r = (i<255) ? 255-i : 0;
-		// 	this.g = 255-Math.abs(255-i);
-		// 	this.b = (i>255) ? i-255 : 0;
-		// },
 	},
+	watch:{
+		color: function(val){
+			console.log(val)
+		}
+	}
 }
 </script>
 

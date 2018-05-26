@@ -18,25 +18,14 @@ export default {
       }
       this.melody = new this.$tone.Sequence(addMelody, melody_data);
       // テンポを指定
-      // this.melody.start();
+      this.melody.start();
       this.$tone.Transport.bpm.value = 120
       this.$tone.Transport.start();
     },
-    stopBeep() {
+    finishBeep() {
       // メロディを鳴らす音源
       var synth = new this.$tone.Synth().toMaster();
-      // メロディの音階データ
-      var melody_data = [
-        'G5', null, 'G5', null
-      ];
-      var addMelody = (time, note) => {
-        synth.triggerAttackRelease(note, '8n', time);
-      }
-      this.melody = new this.$tone.Sequence(addMelody, melody_data);
-      // テンポを指定
-      // this.melody.start();
-      this.$tone.Transport.bpm.value = 120
-      this.$tone.Transport.start();
+      synth.triggerAttackRelease('G5', '2n');
     }
   }
 }
