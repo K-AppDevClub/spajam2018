@@ -1,3 +1,5 @@
+import calcScore from '../../components/sound/CalcScore.js'
+
 export default {
   data() {
 		return {
@@ -15,7 +17,11 @@ export default {
 			chunks: [],
 			cur_spectrum: [],
 			margin: 10, 
-			idx: 0,
+      idx: 0,
+      preSpectrums: [],
+      score: 0,
+      socre_list: [],
+      rate: 1,
 		};
 	},
 	created(){
@@ -24,6 +30,9 @@ export default {
   },
   mounted() {
     this.clear();
+  },
+  computed: {
+    rounded_score: function(){return Math.round(this.score) * this.rate },
   },
   methods: {
     startRecording() {
@@ -59,14 +68,17 @@ export default {
       this.audioAnalyser.getByteFrequencyData(spectrums);
 
       // 描画
-      this.cur_spectrum = spectrums
+      this.cur_spectrum = spectrums;
       console.log(this.cur_spectrum);
+      this.score += (this.socre_list[this.idx++] = calcScore.calc(this.preSpectrums, spectrums));
+      this.preSpectrums = spectrums;
     },
     
     endRecording(){
       this.recordingFlg = false;
       this.stopMediaRecording();
       this.audioContext.close();
+      console.log(this.score);
     },
 
     startMediaRecording(stream){
@@ -88,6 +100,7 @@ export default {
       this.idx = 0;
       this.chunks = []
       this.shuoldPlay = false
+      this.score = 0;
     },
   }	
 }
