@@ -14,7 +14,7 @@ export default {
 	},
 	methods: {
 		getAcceleration(e){
-			console.log(e)
+			// console.log(e)
 			var acc = e.acceleration
 			this.x = acc.x > 5 ? Math.floor(acc.x) : 0;
 			this.y = acc.y > 5 ? Math.floor(acc.y) : 0;
