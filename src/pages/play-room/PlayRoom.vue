@@ -1,12 +1,9 @@
 <template>
   <ons-page>
     <navbar navType="back" backType="router" :msg="room_id"></navbar>
-    <h1> {{ user_name }}:{{ sum }}</h1>
+    <h1> {{ user_name }}:{{ my_score }}</h1>
     <h1> {{ enemy_name }}: {{ enemy_score }}</h1>
-    <!-- <v-ons-button @click="startRecording()">開始</v-ons-button>
-    <v-ons-button @click="endRecording()">停止</v-ons-button> -->
     <br>
-    <p> {{ this.rounded_score }} </p>
     <v-ons-modal :visible="!isPlaying">
       <p v-if="isReady" style="text-align: center; font-size:50px">
         {{countdown_num}}

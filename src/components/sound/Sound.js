@@ -68,7 +68,9 @@ export default {
       // 描画
       this.cur_spectrum = spectrums;
       // console.log(this.cur_spectrum);
-      this.score += (this.socre_list[this.idx++] = calcScore.calc(this.preSpectrums, spectrums));
+      if(calcScore.calc(this.preSpectrums, spectrums)>2000){
+        this.score += (this.socre_list[this.idx++] = calcScore.calc(this.preSpectrums, spectrums));
+      }
       this.preSpectrums = spectrums;
     },
     

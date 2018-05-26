@@ -3,6 +3,7 @@ export default {
     return {
       enemy_name: "",
       enemy_score: 0,
+      my_score: 0,
       isPlaying: false,
       isReady: false
     };
@@ -31,6 +32,9 @@ export default {
         },
         received(data) {
           console.log("received", data);
+          if(data.status=="cal_stream" && data.name == that.user_name){
+            that.my_score = data.score
+          }
           if(data.status=="cal_stream" && data.name != that.user_name){
             that.enemy_name = data.name
             that.enemy_score = data.score
@@ -56,7 +60,7 @@ export default {
       this.sum = 0;
     },
     cal_stream() {
-      var score = this.sum || 10;
+      var score = parseInt(this.sum + this.rounded_score);
       this.messageChannel.perform('cal_stream', {
         name: this.user_name, 
         score: score, 
@@ -65,6 +69,11 @@ export default {
   },
   watch: {
     sum: function(val){
+      if(this.isPlaying){
+        this.cal_stream()
+      }
+    },
+    rounded_score: function(val){
       if(this.isPlaying){
         this.cal_stream()
       }
