@@ -28,23 +28,26 @@
       <h1>ルームを作成</h1>
       <v-ons-button style="margin: 6px 0" @click="makeRoom()">つくる！</v-ons-button>
     </ons-card>
+    <!-- <v-ons-fab @click="makeRoom()" style="position:fixed;" modifier="material" position="bottom right" >
+      <v-ons-icon icon="md-plus"></v-ons-icon>
+    </v-ons-fab> -->
   </v-ons-page>
 </template>
 
 <script>
 import LoadingIndicator from '../../components/loading-indicator/LoadingIndicator';
-import Accceleration from '../../components/acceleration/acceleration'
 import CreatePlan from '../../pages/create-plan/CreatePlan';
 import PlayRoom from '../../pages/play-room/PlayRoom';
 import RegionPage from '../../pages/region/Region';
 import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
+import ObserveBattle from '../../components/observe-battle/ObserveBattle'
 
 export default {
   name: 'posts-page',
   components: {
     LoadingIndicator,
-    Accceleration,
+    ObserveBattle,
     Navbar,
   },
   methods: {

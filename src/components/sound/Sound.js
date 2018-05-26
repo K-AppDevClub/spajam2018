@@ -44,7 +44,7 @@ export default {
 
     whenGetUserMedia(stream){
       // 音声取得関連
-      this.startMediaRecording(stream)
+      //  this.startMediaRecording(stream)
 
       var scriptProcessor = this.audioContext.createScriptProcessor(this.bufferSize, 1, 1);
       var mediastreamsource = this.audioContext.createMediaStreamSource(stream);
@@ -58,11 +58,6 @@ export default {
     },
 
     onAudioProcess(e) {
-      // if (!this.recordingFlg) return;
-      // // 音声のバッファを作成
-      // var input = e.inputBuffer.getChannelData(0);
-      // var bufferData = new Float32Array(this.bufferSize);
-      // for (var i = 0; i < this.bufferSize; i++) bufferData[i] = input[i];
       // 波形を解析
       var spectrums = new Uint8Array(this.audioAnalyser.frequencyBinCount);
       this.audioAnalyser.getByteFrequencyData(spectrums);
@@ -76,7 +71,7 @@ export default {
     
     endRecording(){
       this.recordingFlg = false;
-      this.stopMediaRecording();
+      //this.stopMediaRecording();
       this.audioContext.close();
       console.log(this.score);
     },
