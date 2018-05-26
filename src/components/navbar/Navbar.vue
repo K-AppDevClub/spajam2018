@@ -11,7 +11,7 @@
     cursor: pointer;
   }
   ons-button {
-    color: white;
+    color: "brue";
     font-weight: 600;
   }
 </style>
