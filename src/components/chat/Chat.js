@@ -1,9 +1,10 @@
 export default {
   data() {
     return {
-      enemy_name: "相手",
+      enemy_name: "",
       enemy_score: 0,
-      isPlaying: true,
+      isPlaying: false,
+      isReady: false
     };
   },
   beforeDestroy() {
@@ -34,8 +35,17 @@ export default {
             that.enemy_name = data.name
             that.enemy_score = data.score
           }
-          // if(data.status=="drag")
-          //   that.$store.commit('newDragStream', data );
+          if(data.status=="login" && data.name != that.user_name){
+            that.enemy_name = data.name
+            this.perform('start_game');
+          }
+          if(data.status=="start_game"){
+            that.isReady = true;
+          }
+          if(data.status=="disconnected"){
+            that.$router.go(-1)
+            that.$ons.notification.alert('切断されました');
+          }
         },
       }
     )

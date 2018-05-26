@@ -10,6 +10,7 @@ export default {
 			y: 0,
 			z: 0,
 			sum : 0,
+			isGetAcceleration: false,
 		}
 	},
 	methods: {
@@ -19,7 +20,9 @@ export default {
 			this.x = acc.x > 5 ? Math.floor(acc.x) : 0;
 			this.y = acc.y > 5 ? Math.floor(acc.y) : 0;
 			this.z = acc.z > 5 ? Math.floor(acc.z) : 0;
-			this.sum += Math.abs(this.x) + Math.abs(this.y) + Math.abs(this.z)
+			if(this.isGetAcceleration){
+				this.sum += Math.abs(this.x) + Math.abs(this.y) + Math.abs(this.z)
+			}
 		},
 	},
 
