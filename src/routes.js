@@ -8,6 +8,8 @@ import DetailPlan from './pages/detail-plan/DetailPlan';
 import RegionPage from './pages/region/Region';
 import UserPage from './pages/user-page/UserPage';
 
+import PlayRoom from './pages/play-room/PlayRoom';
+
 
 export default [
   { name: 'home', path: '/', component: HomeBase },
@@ -18,4 +20,5 @@ export default [
   { name: 'detail-plan', path: '/detail-plan', component: DetailPlan },
   { name: 'region', path: '/region', component: RegionPage },
   { name: 'userPage', path: '/user-page', component: UserPage },
+  { name: 'play-room', path: '/play-room', component: PlayRoom },  
 ];
