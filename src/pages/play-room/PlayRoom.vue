@@ -71,15 +71,7 @@ export default {
       this.isPlaying = false;
       this.isGetAcceleration = false;
       this.endRecording();
-    },
-    goResult() {
-      this.total_score = this.rounded_score + this.sum
-      this.$router.push({ name: 'result' ,params: { 
-        player1:this.user_name,
-        player2:this.enemy_name,
-        total_score1: this.my_score,
-        total_score2: this.enemy_score,
-      } })
+      this.finishBeep();
     },
   },
   computed: {
@@ -92,7 +84,6 @@ export default {
         this.judgeCounter += 1;
         if(this.judgeCounter>50){
           this.stopGame();
-          // this.goResult();
           this.messageChannel.perform('end_game');
         }
       }else{
