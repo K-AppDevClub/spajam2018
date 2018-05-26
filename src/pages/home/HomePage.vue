@@ -54,6 +54,7 @@ export default {
     goRoom(res) {
       localStorage.setItem('Name' , this.user_name);
       this.$router.push({ name: 'play-room' ,params: { 
+
         room_id: res.data.id, 
         user_name:this.user_name
       } })
