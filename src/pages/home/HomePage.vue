@@ -18,6 +18,7 @@
       </v-ons-list-header>
       <v-ons-list-item @click="goRegion">地域:  {{currentArea.name}}</v-ons-list-item>
       <v-ons-list-item @click="goRegion">並び順：人気順</v-ons-list-item>
+      <v-ons-list-item @click="goPlayRoom">goPlayRoom</v-ons-list-item>      
     </v-ons-list>
     <!-- <v-ons-list-header>話題のデート体験記</v-ons-list-header> -->
     <v-ons-card v-for='item in experiences' :v-bind='item' v-bind:key="item.id" @click="goPlan(item.id)">
@@ -39,6 +40,7 @@
 <script>
 import LoadingIndicator from '../../components/loading-indicator/LoadingIndicator';
 import CreatePlan from '../../pages/create-plan/CreatePlan';
+import PlayRoom from '../../pages/play-room/PlayRoom';
 import RegionPage from '../../pages/region/Region';
 import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
@@ -53,6 +55,19 @@ export default {
     Chat,
   },
   methods: {
+    goPlayRoom(){
+      // this.$emit('push-page', {
+      //   extends: PlayRoom,
+      //   onsNavigatorProps: {
+      //     name: "ryuji",
+      //   }
+      // })
+      this.$router.push({ name: 'play-room' ,params: { 
+        room_id: 2,
+        user_name: "ryuji"
+      }
+      });
+    },
     goCreate() {
       this.$emit('push-page', CreatePlan)
     },
