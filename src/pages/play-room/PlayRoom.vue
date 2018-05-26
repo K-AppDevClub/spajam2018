@@ -1,3 +1,5 @@
+
+
 <template>
   <ons-page>
     <navbar navType="back" backType="router" :msg="room_id"></navbar>
@@ -19,6 +21,7 @@
 
 <script>
 import Navbar from '../../components/navbar/Navbar';
+import Bar from '../../components/bar/Bar'
 import acceleration from '../../components/acceleration/acceleration.js'
 import Chat from '../../components/chat/Chat.js'
 import Sound from '../../components/sound/Sound.js'
@@ -29,7 +32,8 @@ export default {
   mixins: [acceleration, Chat, Sound],
   
   components: {
-    Navbar,
+		Navbar,
+		Bar,
 	},
 	data(){
 		return{
