@@ -63,6 +63,24 @@ export default {
       }
     )
   },
+  computed: {
+    judgePoint(){
+      var rate = this.my_score / this.enemy_score * 100;
+      var threshold = 120;
+      console.log(rate);
+      console.log(this.judgeCounter);
+      if(rate>threshold || rate < rate/threshold){
+        this.judgeCounter += 1;
+        if(this.judgeCounter>50){
+          this.stopGame();
+          this.messageChannel.perform('end_game');
+        }
+      }else{
+        this.judgeCounter = 0;
+      }
+      return rate;
+    },
+  },
   methods: {
     start_connection(){
       this.isPlaying = true;

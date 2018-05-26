@@ -10,7 +10,7 @@ import UserPage from './pages/user-page/UserPage';
 
 import PlayRoom from './pages/play-room/PlayRoom';
 import Result from './pages/result/Result';
-
+import Viewing from './pages/viewing/Viewing';
 
 export default [
   { name: 'home', path: '/', component: HomeBase },
@@ -23,4 +23,5 @@ export default [
   { name: 'userPage', path: '/user-page', component: UserPage },
   { name: 'play-room', path: '/play-room', component: PlayRoom },  
   { name: 'result', path: '/result', component: Result },  
+  { name: 'viewing', path: '/viewing', component: Viewing },  
 ];

@@ -36,7 +36,6 @@ export default {
   },
 
   mounted(){
-    this.img = [...Array(5)].map(function(i){ return new Audio()})
     for(var i=1; i<6; i++){
       this.src[i-1] =  require("../../../images/spanyan" + i + ".png")
     }

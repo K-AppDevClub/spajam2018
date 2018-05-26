@@ -74,24 +74,6 @@ export default {
       this.finishBeep();
     },
   },
-  computed: {
-    judgePoint(){
-      var rate = this.my_score / this.enemy_score * 100;
-      var threshold = 120;
-      console.log(rate);
-      console.log(this.judgeCounter);
-      if(rate>threshold || rate < rate/threshold){
-        this.judgeCounter += 1;
-        if(this.judgeCounter>50){
-          this.stopGame();
-          this.messageChannel.perform('end_game');
-        }
-      }else{
-        this.judgeCounter = 0;
-      }
-      return rate;
-    },
-  },
   watch: {
     isReady: function(val){
       console.log("hogehoge");
