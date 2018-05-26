@@ -20,10 +20,9 @@
 </style>
 <template>
   <ons-page>
-    <navbar navType="blank" sg="Result"></navbar>
-    <ObserveBattle/>
-    <ons-card>
-    </ons-card>
+    <br><br>
+    <navbar navType="blank" msg="観戦モード"></navbar>
+    <ObserveBattle :x="judgePoint"/>
   </ons-page>
 </template>
 
@@ -39,11 +38,15 @@ export default {
     Navbar,
     ObserveBattle,
   },
+  data() {
+    return {
+      user_name: "",
+    }
+  },
   mounted() {
-    console.log(this.$route.params.score);
+    this.isPlayer = false;
   },
   method:{
-    
   }
 };
 </script>
