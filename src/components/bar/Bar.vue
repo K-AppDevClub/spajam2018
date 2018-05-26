@@ -4,19 +4,18 @@
   width: 500px;
   height: 500px;
 	position: relative;
+	vertical-align: middle;
 }
 .nyan {
-	width: 50px;
+	width: 200px;
 	/* position: absolute; */
 }
 .nyan2 {
 	width: 100%;
-	height: 500px;
-	text-align: center;
-	vertical-align: middle;
-	/* position: absolute; */
-	margin: auto;
-	/* margin: auto, auto; */
+	height: 50px;
+  top: 30%;
+	position: absolute;
+  text-align: center;
 }
 </style>
 
@@ -25,6 +24,7 @@
 		<v-ons-row>
 			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-80)/20)) +')' }" class="board">
 			<div class="nyan2">
+				<!-- aaa -->
 				<img :src="image_src" class="nyan">
 			</div>
 			</v-ons-col>
