@@ -5,17 +5,18 @@
     <v-ons-button @click="startRecording()">開始</v-ons-button>
     <v-ons-button @click="endRecording()">停止</v-ons-button>
     <br>
-    <graph :spectrums="cur_spectrum"></graph>
+    <!-- <graph :spectrums="cur_spectrum"></graph> -->
   </ons-page>
 </template>
 
 <script>
 import Navbar from '../../components/navbar/Navbar';
 import acceleration from '../../components/acceleration/acceleration'
+import Chat from '../../components/chat/Chat.js'
 
 export default {
   name: 'play-room',
-  extends: acceleration,
+  mixins: [acceleration, Chat],
   
   components: {
     Navbar,
