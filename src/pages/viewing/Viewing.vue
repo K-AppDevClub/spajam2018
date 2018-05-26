@@ -32,7 +32,7 @@ import ObserveBattle from '../../components/observe-battle/ObserveBattle';
 import Chat from '../../components/chat/Chat.js'
 
 export default {
-  name: 'result',
+  name: 'viewing',
   mixins: [Chat,],
   components: {
     Navbar,
