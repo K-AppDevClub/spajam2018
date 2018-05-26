@@ -1,6 +1,6 @@
 <style>
 .board {
-  background-color: rgb(204, 211, 235);
+  background-color: rgba(204, 211, 235,1);
   width: 500px;
   height: 500px;
 }
@@ -9,7 +9,7 @@
 <template>
 	<div>
 		<v-ons-row>
-			<v-ons-col v-bind:style="{ background: 'rgb('+ red +','+ green +',' + blue + ')' }" class="board"></v-ons-col>
+			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-80)/20)) +')' }" class="board"></v-ons-col>
 		</v-ons-row>
 	</div>
 </template>
