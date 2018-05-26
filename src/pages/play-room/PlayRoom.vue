@@ -53,10 +53,15 @@ export default {
       this.isPlaying = true;
       this.isGetAcceleration = true;
       this.startRecording();
+      setTimeout(()=>{
+        this.melody.stop();
+      },500)
     },
   },
   watch: {
     isReady: function(val){
+      console.log("hogehoge");
+      this.startBeep();
       if(this.isReady){
         this.countdown_timer = setInterval(()=>{
           this.countdown_num -= 1;

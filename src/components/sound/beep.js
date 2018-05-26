@@ -22,7 +22,7 @@ export default {
       this.$tone.Transport.bpm.value = 120
       this.$tone.Transport.start();
     },
-    stopBeep() {
+    finishBeep() {
       // メロディを鳴らす音源
       var synth = new this.$tone.Synth().toMaster();
       // メロディの音階データ
