@@ -51,7 +51,7 @@
 </style>
 <template>
   <ons-page>
-    <navbar navType="blank" sg="Result"></navbar>
+    <navbar navType="blank" msg="Result"></navbar>
     <div v-if="$route.params.total_score1　>　$route.params.total_score2　">
       <ons-card> 
         <div class="relative">
