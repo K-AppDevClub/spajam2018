@@ -47,13 +47,7 @@ export default {
             that.isReady = true;
           }
           if(data.status=="end_game"){
-            that.total_score = this.rounded_score + this.sum
-            that.$router.push({ name: 'result' ,params: { 
-              player1:that.user_name,
-              player2:that.enemy_name,
-              total_score1: that.my_score,
-              total_score2: that.enemy_score,
-            } })
+            that.goResult();
           }
           if(data.status=="disconnected"){
             that.$router.go(-1)
