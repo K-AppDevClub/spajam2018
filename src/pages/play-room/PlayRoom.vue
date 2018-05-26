@@ -11,7 +11,7 @@
 
 <script>
 import Navbar from '../../components/navbar/Navbar';
-import acceleration from '../../components/acceleration/acceleration'
+import acceleration from '../../components/acceleration/acceleration.js'
 
 export default {
   name: 'play-room',

@@ -9,6 +9,7 @@
 
 <template>
   <v-ons-page>
+    <observe-battle/>
     <navbar navType="blank" msg="シェイク"></navbar>
     <ons-card>
       <h1>ユーザー名入力</h1>
@@ -32,24 +33,23 @@
     <!-- <v-ons-fab @click="makeRoom()" style="position:fixed;" modifier="material" position="bottom right" >
       <v-ons-icon icon="md-plus"></v-ons-icon>
     </v-ons-fab> -->
->>>>>>> 282c62ac18318cb638d51ae0474c01c5ec4dbb1d
   </v-ons-page>
 </template>
 
 <script>
 import LoadingIndicator from '../../components/loading-indicator/LoadingIndicator';
-import Accceleration from '../../components/acceleration/acceleration'
 import CreatePlan from '../../pages/create-plan/CreatePlan';
 import PlayRoom from '../../pages/play-room/PlayRoom';
 import RegionPage from '../../pages/region/Region';
 import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
+import ObserveBattle from '../../components/observe-battle/ObserveBattle'
 
 export default {
   name: 'posts-page',
   components: {
     LoadingIndicator,
-    Accceleration,
+    ObserveBattle,
     Navbar,
   },
   methods: {
@@ -100,7 +100,6 @@ export default {
     return {
       // joinurl: `http://k-appdev.com:3003/rooms/search`,
       // makeurl:`http://k-appdev.com:3003/rooms`, 
-      config: Config,
       room_id: '',
       user_name: localStorage.getItem('Name'),
       //strage_name:''
