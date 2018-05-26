@@ -60,10 +60,10 @@ export default {
             if(that.isPlayer){
               that.goResult();
             }else{
-              that.$router.push({ name: 'home' });
+              that.$router.push({ name: 'viewing' });
             }
           }
-          if(data.status=="disconnected"){
+          if(data.status=="disconnected" && that.isPlayer){
             that.$router.go(-1)
             that.$ons.notification.alert('切断されました');
           }
@@ -73,20 +73,21 @@ export default {
   },
   computed: {
     judgePoint(){
-      var rate = this.my_score / this.enemy_score * 100;
-      var threshold = 120;
+      var rate = 1 - this.enemy_score / this.my_score;
+      var point = 256 + rate * 125;
+      var threshold = 0.2;
       console.log(`my_score=${this.my_score}, enemy_score=${this.enemy_score}, rate=${rate}`);
       console.log(this.judgeCounter);
-      if(rate>threshold || rate < rate/threshold){
+      if(rate>threshold || rate < -threshold){
         this.judgeCounter += 1;
-        if(this.judgeCounter>50){
+        if(this.judgeCounter>50 && this.isPlayer){
           this.stopGame();
           this.messageChannel.perform('end_game');
         }
       }else{
         this.judgeCounter = 0;
       }
-      return rate;
+      return point;
     },
   },
   methods: {

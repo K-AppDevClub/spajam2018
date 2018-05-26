@@ -25,7 +25,6 @@
         <v-ons-button @click="$router.go(-1)" >タップしてキャンセル</v-ons-button>
       </p>
     </v-ons-modal>
-    <v-ons-button @click="goResult()">（仮）結果</v-ons-button>
   </ons-page>
 </template>
 
@@ -75,8 +74,9 @@ export default {
       this.finishBeep();
       this.total_score = this.rounded_score + this.sum
       this.$router.push({ name: 'result' ,params: { 
-        player1:this.user_name,
-        player2:this.enemy_name,
+        room_id: this.room_id,
+        player1: this.user_name,
+        player2: this.enemy_name,
         total_score1: this.my_score,
         total_score2: this.enemy_score,
       } })

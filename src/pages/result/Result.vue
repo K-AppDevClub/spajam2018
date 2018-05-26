@@ -86,6 +86,7 @@
       <div class="flex-container">
         <twitter class="action-btn"  v-bind:score = $route.params.total_score1></twitter>
         <v-ons-button class="action-btn"  @click="$router.push({ name: 'home'});">Home</v-ons-button>
+        <v-ons-button class="action-btn"  @click="$router.push({ name: 'play-room' ,params: { room_id: $route.params.room_id, user_name:$route.params.player1 } });">retry</v-ons-button>
       </div>
  
     </v-ons-card>
