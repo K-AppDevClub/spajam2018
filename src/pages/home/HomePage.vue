@@ -11,7 +11,8 @@
 <template>
   <v-ons-page>
     <navbar navType="blank" msg="シェイク"></navbar>
-    <observe-battle/>
+    <observe-battle :x="x"/>
+    <input class="range" v-model="x" type="range" min="0" value="0" max="512" step="2">
     <ons-card>
       <v-ons-list-item>
         <span style="margin-right:15px;">ユーザー名: </span>
@@ -80,6 +81,7 @@ export default {
   data() {
     return {
       makeurl:`https://k-appdev.com:3010/rooms`, 
+      x: 0,
       //joinurl:`https://k-appdev.com:3010/rooms/${join_id}`,
       room_id: '',
       join_id: '',

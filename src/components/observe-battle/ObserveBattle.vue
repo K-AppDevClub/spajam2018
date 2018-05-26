@@ -1,14 +1,8 @@
 <template>
   <div>
-    <h1 :x="x">{{ x }}</h1>
-    <button @click="imgDraw">hoge</button>
-    <div>
-      <canvas ref="left" :width="32" :height="height" style="position:absolute top:50  left:0"/>
-      <canvas ref="canvas" :width="width" :height="height" style="position:absolute top:50 left:32px"/>
-      <canvas ref="right" :width="32" :height="height" style="position:absolute top:50 right:33px"/>
-    </div>
-    <br>
-    <input class="range" v-model="x" type="range" min="0" value="0" max="512" step="2" v-on:change="imgDraw()">
+    <canvas ref="left" :width="32" :height="height" style="position:absolute top:50  left:0"/>
+    <canvas ref="canvas" :width="width" :height="height" style="position:absolute top:50 left:32px"/>
+    <canvas ref="right" :width="32" :height="height" style="position:absolute top:50 right:33px"/>
   </div>
 </template>
 
@@ -16,9 +10,14 @@
 import anime from "animejs"
 
 export default {
+  props: {
+    x:{
+      default: 0
+    }
+  },
+
   data(){
-    return { 
-      x: 0,
+    return {
       y: 0,
       dx: [0, 30, 60, 15, 45],
       dy: [0,  0,  0, 30, 30],
@@ -44,6 +43,7 @@ export default {
     this.leftSrc = require("../../../images/nekojarashi.png")
     this.rightSrc = require("../../../images/rNekojarashi.png")
     this.InituialSetting()
+    this.imgDraw()
     this.animate()
   },
 
@@ -95,6 +95,11 @@ export default {
       }
       this.leftCtx.drawImage(this.leftImg, 0, 0, 32, 48);
       this.rightCtx.drawImage(this.rightImg, 0, 0, 32, 48);
+    }
+  },
+  watch: {
+    x: function(){
+      this.imgDraw()
     }
   },
 
