@@ -11,6 +11,7 @@
       </p>  
       <p v-else style="text-align: center">
         対戦者を待っています...<br><br>
+        ルームID：{{room_id}}<br><br>
         <v-ons-progress-circular indeterminate></v-ons-progress-circular>
         <br><br><br><br>
         <v-ons-button @click="$router.go(-1)" >タップしてキャンセル</v-ons-button>
