@@ -11,7 +11,8 @@
     cursor: pointer;
   }
   ons-button {
-    color: "brue";
+    color: "white";
+    // color: "brue";
     font-weight: 600;
   }
 </style>
@@ -27,8 +28,7 @@
     </div> 
     <div v-else-if="navType=='back'" class="left">
       <div v-if="backType=='router'" class="left">
-        <!-- <v-ons-back-button modifier="quiet" @click="backHome"><div class="back">戻る</div></v-ons-back-button> -->
-        <v-ons-button modifier="quiet" @click="backHome"><div class="back">戻る</div></v-ons-button>
+        <v-ons-button modifier="quiet" @click="backHome"><font color="white">戻る</font></v-ons-button>
       </div>
       <div v-else class="left">
         <v-ons-back-button>戻る</v-ons-back-button>

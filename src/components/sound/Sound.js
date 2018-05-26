@@ -34,6 +34,9 @@ export default {
   computed: {
     rounded_score: function(){return Math.round(this.score) * this.rate },
   },
+  beforeDestroy() {
+    this.endRecording();
+  },
   methods: {
     startRecording() {
       this.clear();
@@ -63,7 +66,7 @@ export default {
 
       // 描画
       this.cur_spectrum = spectrums;
-      console.log(this.cur_spectrum);
+      // console.log(this.cur_spectrum);
       this.score += (this.socre_list[this.idx++] = calcScore.calc(this.preSpectrums, spectrums));
       this.preSpectrums = spectrums;
     },
@@ -71,8 +74,10 @@ export default {
     endRecording(){
       this.recordingFlg = false;
       //this.stopMediaRecording();
-      this.audioContext.close();
-      console.log(this.score);
+      if(this.audioContext){
+        this.audioContext.close();
+      }
+      // console.log(this.score);
     },
 
     startMediaRecording(stream){

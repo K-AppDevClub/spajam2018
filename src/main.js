@@ -11,11 +11,13 @@ import VueAxios from 'vue-axios';import ActionCable from 'actioncable';
 import 'onsenui/css/onsenui.css';
 import App from './App';
 import routes from './routes';
+import tone from 'tone';
 const cable = ActionCable.createConsumer('wss:k-appdev.com:3010/cable');
 
 import anime from 'animejs';
 
 import 'onsenui/css/onsen-css-components.css';
+// import '../static/css/onsen-css-components-green.min.css';
 import '../static/css/onsen-css-components-orange.min.css';
 // import '../static/css/onsen-css-components-pink.min.css';
 
@@ -33,6 +35,7 @@ Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.prototype.$cable = cable;
 Vue.prototype.$anime = anime;
+Vue.prototype.$tone = tone;
 
 const router = new VueRouter({
   mode: 'hash',

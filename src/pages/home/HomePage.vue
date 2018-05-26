@@ -5,6 +5,7 @@
 .body {
   margin-top: 50px;
 }
+
 </style>
 
 <template>
@@ -14,14 +15,14 @@
     <ons-card>
       <v-ons-list-item>
         <span style="margin-right:15px;">ユーザー名: </span>
-        <v-ons-input placeholder="（例：ほげほげ）" float v-model="user_name"></v-ons-input>
+        <v-ons-input float v-model="user_name"></v-ons-input>
       </v-ons-list-item>
     </ons-card>
     <ons-card>
       <h1>ルームに参加</h1>
       <v-ons-list-item>
         <span style="margin-right:15px;">ルームid: </span>
-        <v-ons-input placeholder="（例：なんでも）" float v-model="join_id"></v-ons-input>
+        <v-ons-input float v-model="join_id"></v-ons-input>
       </v-ons-list-item>
       <v-ons-button style="margin: 6px 0" @click="joinGo()">はいる！</v-ons-button>
     </ons-card>
@@ -29,9 +30,6 @@
       <h1>ルームを作成</h1>
       <v-ons-button style="margin: 6px 0" @click="makeRoom()">つくる！</v-ons-button>
     </ons-card>
-    <!-- <v-ons-fab @click="makeRoom()" style="position:fixed;" modifier="material" position="bottom right" >
-      <v-ons-icon icon="md-plus"></v-ons-icon>
-    </v-ons-fab> -->
   </v-ons-page>
 </template>
 
@@ -51,42 +49,29 @@ export default {
     LoadingIndicator,
     ObserveBattle,
     Navbar,
-    Bar
+    Bar,
   },
   methods: {
-    goRoom(res) {
+    // goRoom(res) {
+    //   localStorage.setItem('Name' , this.user_name);
+    //   this.$router.push({ name: 'play-room' ,params: { 
+    //     room_id: res.data.id, 
+    //     user_name:this.user_name
+    //   } })
+    // },
+    joinGo(){
       localStorage.setItem('Name' , this.user_name);
       this.$router.push({ name: 'play-room' ,params: { 
-
-        room_id: res.data.id, 
+        room_id: this.join_id, 
         user_name:this.user_name
       } })
     },
-    joinGo(){
-      this.axios.get(this.makeurl,{id:{}})
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem('Name' , this.user_name);
-        this.$router.push({ name: 'play-room' ,params: { 
-          room_id: this.join_id, 
-          user_name:this.user_name
-        } })
-      })
-      .catch(err => {
-        this.$ons.notification.alert('ルームが存在しません');
-      });
-    },
 
     makeRoom(){
-      this.axios.post(this.makeurl,{room:{}})
-      .then(room_data => {
-        console.log(room_data)
-        this.goRoom(room_data)
-      })
-      .catch(err => {
-        this.$ons.notification.alert('そのルーム名はすでに使われています');
-      });
- 
+      this.$router.push({ name: 'play-room' ,params: { 
+        room_id: Math.floor( Math.random() * (10000000) ), 
+        user_name:this.user_name
+      } })
     },
     
   },
@@ -99,7 +84,7 @@ export default {
       room_id: '',
       join_id: '',
       user_name: localStorage.getItem('Name'),
-      strage_name:''
+      strage_name:'',
     };
   },
 };
