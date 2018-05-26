@@ -20,20 +20,21 @@
   background-color: #ffa500;
   color: #ffffff;
 }
-.img{
-  //text-align: center;
-  margin: 0 auto;
-  width:  40px ;
-  height: auto;
-  left: 40%;
-  top: 90%;
-}
 .back{
   text-align: center;
   width:  100% ;
   height: 250px;
   margin: 0 auto;
-  
+}
+.lose{
+  text-align: center;
+  width:  70px ;
+  height: auto;
+  margin: 0, auto;
+  // width: 100%;
+}
+.hoge{
+  text-align: center;
 }
 .relative {
   position: relative;
@@ -65,17 +66,19 @@
     <div v-else>
       <ons-card> 
         <h1 class="center">You Lose...</h1>
-        <img class="img" :src="image_lose" >
+        <v-ons-row>
+          <v-ons-col>
+            <div class="hoge">
+              <img :src="image_lose" class="lose">
+            </div>
+          </v-ons-col>
+        </v-ons-row>
       </ons-card>
     </div>
     <ons-card> 
-      <h2>{{ $route.params.player1 }}</h2>
-      <!-- <h2 class="big"> {{ $route.params.player1 }} </h2> -->
+      <h2 class="big">{{ $route.params.player1 }}</h2>
       <h3> Score:{{ $route.params.total_score1 }}</h3>
-    </ons-card>
-    <ons-card>
-      <h3 class="center">Lose... </h3>
-      <h2 class="big">{{ $route.params.player2 }}</h2>
+      <h2 class="big" style="margin-top:20px">{{ $route.params.player2 }}</h2>
       <h3> Score:{{ $route.params.total_score2 }}</h3>
     </ons-card>
 
