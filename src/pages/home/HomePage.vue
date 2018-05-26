@@ -89,7 +89,6 @@ export default {
     return {
       makeurl:`https://k-appdev.com:3010/rooms`, 
       //joinurl:`https://k-appdev.com:3010/rooms/${join_id}`,
-      config: Config,
       room_id: '',
       join_id: '',
       user_name: localStorage.getItem('Name'),
