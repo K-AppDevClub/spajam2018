@@ -50,7 +50,6 @@ export default {
       modalVisible: true,
       countdown_timer: null,
       countdown_num: 3,
-      judgeCounter: 0,
 		}
   },
   methods: {
