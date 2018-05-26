@@ -36,7 +36,7 @@ export default {
     imgDraw(){
       var ctx = this.$refs.canvas.getContext("2d")
       var img = new Image()
-      var url = URL.createObjectURL("../../../images/spanyan1.png")
+      varurl = URL.createObjectURL("../../../images/spanyan1.png")
       img.src = url
       ctx.drawImage(img , this.x. this.y);
     }
