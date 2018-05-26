@@ -21,7 +21,9 @@
   "dependencies": {
     "@google/maps": "^0.4.6",
     "actioncable": "^5.2.0",
+    "animejs": "^2.2.0",
     "axios": "^0.16.2",
+    "chart.js": "^2.7.2",
     "cordova-common": "^2.2.1",
     "element-ui": "^2.3.4",
     "elementtree": "^0.1.7",
@@ -29,6 +31,7 @@
     "properties-parser": "^0.3.1",
     "vue": "^2.3.3",
     "vue-axios": "^2.1.1",
+    "vue-chartjs": "^3.3.1",
     "vue-onsenui": "~2.5.0",
     "vue-router": "^2.6.0",
     "vue2-google-maps": "^0.9.3",

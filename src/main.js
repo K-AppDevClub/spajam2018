@@ -13,6 +13,8 @@ import App from './App';
 import routes from './routes';
 const cable = ActionCable.createConsumer('wss:k-appdev.com:3010/cable');
 
+import anime from 'animejs';
+
 import 'onsenui/css/onsen-css-components.css';
 // import '../static/css/onsen-css-components-pink.min.css';
 
@@ -29,6 +31,7 @@ Vue.use(VueOnsen);
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 Vue.prototype.$cable = cable;
+Vue.prototype.$anime = anime;
 
 const router = new VueRouter({
   mode: 'hash',

@@ -58,7 +58,7 @@ export default {
       //localStorage.setItem('Name' , this.user_name);
       this.$router.push({ name: 'play-room' ,params: { 
         //room_id: res.data.id, 
-        room_id: 1,
+        room_id: 3,
         user_name:'ehama'
       } });
     },
