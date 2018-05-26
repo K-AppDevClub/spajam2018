@@ -1,13 +1,3 @@
-<template>
-	<v-ons-page>
-	<p v-for="item in bga" v-bind:key="item.id">
-		{{ item }}
-	</p>
-	<h1 :sum="sum"> {{ sum }} </h1>
-	</v-ons-page>
-</template>
-
-<script>
 export default {
 	name: "gyro",
 
@@ -39,5 +29,4 @@ export default {
 		}
 	},
 }
-</script>
 
