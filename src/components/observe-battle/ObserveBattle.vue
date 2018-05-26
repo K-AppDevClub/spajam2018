@@ -36,15 +36,11 @@ export default {
   },
 
   mounted(){
-    this.img = [...Array(5)].map(function(i){ return new Audio()})
-    for(var i=1; i<6; i++){
-      this.src[i-1] =  require("../../../images/spanyan" + i + ".png")
-    }
-    this.leftSrc = require("../../../images/nekojarashi.png")
-    this.rightSrc = require("../../../images/rNekojarashi.png")
-    this.InituialSetting()
-    this.imgDraw()
-    this.animate()
+    this.InituialSetting().then( (res)=> {
+      console.log("true")
+      this.imgDraw();
+    })
+    this.animate();
   },
 
   methods:{
@@ -71,17 +67,25 @@ export default {
     },
 
     InituialSetting(){
-      this.ctx = this.$refs.canvas.getContext("2d");
-      for(var i=0; i<5; i++){
-        this.img[i] = new Image();
-        this.img[i].src = this.src[i]
-      }
-      this.leftCtx = this.$refs.left.getContext("2d")
-      this.rightCtx = this.$refs.right.getContext("2d")
-      this.leftImg = new Image();
-      this.rightImg = new Image();
-      this.leftImg.src = this.leftSrc;
-      this.rightImg.src = this.rightSrc;
+      return new Promise( (resolve) => {
+        this.ctx = this.$refs.canvas.getContext("2d");
+        this.leftCtx = this.$refs.left.getContext("2d")
+        this.rightCtx = this.$refs.right.getContext("2d")
+        for(var i=1; i<6; i++){
+          this.src[i-1] =  require("../../../images/spanyan" + i + ".png")
+        }
+        this.leftSrc = require("../../../images/nekojarashi.png")
+        this.rightSrc = require("../../../images/rNekojarashi.png")
+        for(var i=0; i<5; i++){
+          this.img[i] = new Image();
+          this.img[i].src = this.src[i]
+        }
+        this.leftImg = new Image();
+        this.rightImg = new Image();
+        this.leftImg.src = this.leftSrc;
+        this.rightImg.src = this.rightSrc;
+        resolve(true)
+      })
     },
 
     imgDraw(){
@@ -89,7 +93,6 @@ export default {
       this.ctx.clearRect(0, 0, this.width, this.height);
       this.leftCtx.clearRect(0,0,this.width, this.height);
       this.rightCtx.clearRect(0,0,this.width, this.height);
-      console.log(this.spax)
       for(var i=0; i<5; i++){
         this.ctx.drawImage(this.img[i] , this.spax+this.dx[i], this.y+this.dy[i], 32, 48);
       }
