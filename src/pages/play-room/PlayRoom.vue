@@ -6,6 +6,7 @@
     <v-ons-button @click="endRecording()">停止</v-ons-button>
     <br>
     <p> {{ this.rounded_score }} </p>
+    <p> {{ this.sum }} </p>
     <!-- <graph :spectrums="cur_spectrum"></graph> -->
   </ons-page>
 </template>
