@@ -65,18 +65,28 @@ export default {
       this.startRecording();
       setTimeout(()=>{
         this.melody.stop();
-      },500)
+      },300)
     },
     stopGame() {
       this.isPlaying = false;
       this.isGetAcceleration = false;
       this.endRecording();
-      this.finishBeep();
     },
+    goResult(){
+      this.finishBeep();
+      this.total_score = this.rounded_score + this.sum
+      this.$router.push({ name: 'result' ,params: { 
+        player1:this.user_name,
+        player2:this.enemy_name,
+        total_score1: this.my_score,
+        total_score2: this.enemy_score,
+      } })
+    }
   },
   watch: {
     isReady: function(val){
       console.log("hogehoge");
+      // this.finishBeep();
       this.startBeep();
       if(this.isReady){
         this.countdown_timer = setInterval(()=>{
