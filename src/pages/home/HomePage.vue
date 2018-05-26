@@ -5,6 +5,7 @@
 .body {
   margin-top: 50px;
 }
+
 </style>
 
 <template>
@@ -39,6 +40,8 @@ import RegionPage from '../../pages/region/Region';
 import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
 import ObserveBattle from '../../components/observe-battle/ObserveBattle'
+import Bar from '../../components/bar/Bar'
+
 
 export default {
   name: 'posts-page',
@@ -46,6 +49,7 @@ export default {
     LoadingIndicator,
     ObserveBattle,
     Navbar,
+    Bar,
   },
   methods: {
     // goRoom(res) {
@@ -80,7 +84,7 @@ export default {
       room_id: '',
       join_id: '',
       user_name: localStorage.getItem('Name'),
-      strage_name:''
+      strage_name:'',
     };
   },
 };
