@@ -28,6 +28,14 @@
       <h1>ルームを作成</h1>
       <v-ons-button style="margin: 6px 0" @click="makeRoom()">つくる！</v-ons-button>
     </ons-card>
+     <ons-card>
+      <h1>ルームを観戦</h1>
+      <v-ons-list-item>
+        <span style="margin-right:15px;">ルームid: </span>
+        <v-ons-input float v-model="join_id"></v-ons-input>
+      </v-ons-list-item>
+      <v-ons-button style="margin: 6px 0" @click="watchRoom()">見る！</v-ons-button>
+    </ons-card>
   </v-ons-page>
 </template>
 
@@ -40,6 +48,7 @@ import DetailPlan from '../../pages/detail-plan/DetailPlan';
 import Navbar from '../../components/navbar/Navbar';
 import ObserveBattle from '../../components/observe-battle/ObserveBattle'
 import Bar from '../../components/bar/Bar'
+import Viewing from '../../pages/viewing/Viewing'
 
 export default {
   name: 'posts-page',
@@ -69,6 +78,11 @@ export default {
       this.$router.push({ name: 'play-room' ,params: { 
         room_id: Math.floor( Math.random() * (10000000) ), 
         user_name:this.user_name
+      } })
+    },
+    watchRoom(){
+      this.$router.push({ name: 'viewing' ,params: { 
+        room_id: this.join_id, 
       } })
     },
     

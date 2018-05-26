@@ -5,7 +5,9 @@ export default {
       enemy_score: 0,
       my_score: 0,
       isPlaying: false,
-      isReady: false
+      isReady: false,
+      isPlayer: true,
+      judgeCounter: 0,
     };
   },
   beforeDestroy() {
@@ -20,8 +22,12 @@ export default {
       {
         connected() {
           console.log("connected");
-          var room_id = that.room_id || 0
-          this.perform('room_login', {room_id: room_id, name: that.user_name});
+          var room_id = that.room_id || 1
+          if(that.isPlayer){
+            this.perform('room_login', {room_id: room_id, name: that.user_name});
+          }else{
+            this.perform('start_viewing', {room_id: room_id});
+          }
         },
         unsubscribed() {
           console.log("unsubscribed")
@@ -32,6 +38,10 @@ export default {
         },
         received(data) {
           console.log("received", data);
+          if(data.status=="cal_stream" && !that.isPlayer && that.user_name==""){
+            that.user_name = data.name;
+            console.log(`set user ${that.user_name}`)
+          }
           if(data.status=="cal_stream" && data.name == that.user_name){
             that.my_score = data.score
           }
@@ -39,7 +49,7 @@ export default {
             that.enemy_name = data.name
             that.enemy_score = data.score
           }
-          if(data.status=="login" && data.name != that.user_name){
+          if(data.status=="login" && data.name != that.user_name && that.isPlayer){
             that.enemy_name = data.name
             this.perform('start_game');
           }
@@ -47,13 +57,11 @@ export default {
             that.isReady = true;
           }
           if(data.status=="end_game"){
-            that.total_score = this.rounded_score + this.sum
-            that.$router.push({ name: 'result' ,params: { 
-              player1:that.user_name,
-              player2:that.enemy_name,
-              total_score1: that.my_score,
-              total_score2: that.enemy_score,
-            } })
+            if(that.isPlayer){
+              that.goResult();
+            }else{
+              that.$router.push({ name: 'home' });
+            }
           }
           if(data.status=="disconnected"){
             that.$router.go(-1)
@@ -62,6 +70,24 @@ export default {
         },
       }
     )
+  },
+  computed: {
+    judgePoint(){
+      var rate = this.my_score / this.enemy_score * 100;
+      var threshold = 120;
+      console.log(`my_score=${this.my_score}, enemy_score=${this.enemy_score}, rate=${rate}`);
+      console.log(this.judgeCounter);
+      if(rate>threshold || rate < rate/threshold){
+        this.judgeCounter += 1;
+        if(this.judgeCounter>50){
+          this.stopGame();
+          this.messageChannel.perform('end_game');
+        }
+      }else{
+        this.judgeCounter = 0;
+      }
+      return rate;
+    },
   },
   methods: {
     start_connection(){

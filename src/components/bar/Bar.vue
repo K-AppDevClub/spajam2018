@@ -1,15 +1,33 @@
 <style>
 .board {
-  background-color: rgb(204, 211, 235);
+  background-color: rgba(204, 211, 235,1);
   width: 500px;
   height: 500px;
+	position: relative;
+	vertical-align: middle;
+}
+.nyan {
+	width: 200px;
+	/* position: absolute; */
+}
+.nyan2 {
+	width: 100%;
+	height: 50px;
+  top: 30%;
+	position: absolute;
+  text-align: center;
 }
 </style>
 
 <template>
 	<div>
 		<v-ons-row>
-			<v-ons-col v-bind:style="{ background: 'rgb('+ red +','+ green +',' + blue + ')' }" class="board"></v-ons-col>
+			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-80)/20)) +')' }" class="board">
+			<div class="nyan2">
+				<!-- aaa -->
+				<img :src="image_src" class="nyan">
+			</div>
+			</v-ons-col>
 		</v-ons-row>
 	</div>
 </template>
@@ -23,6 +41,7 @@ export default {
 	},
 	data(){
 		return{
+			image_src: require('../../../images/spanyan1.png'),
 		}
 	},
 	computed:{

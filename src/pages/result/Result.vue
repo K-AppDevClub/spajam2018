@@ -16,19 +16,69 @@
 .center{
   text-align: center;
 }
+.brk{
+  background-color: #ffa500;
+  color: #ffffff;
+}
+.back{
+  text-align: center;
+  width:  100% ;
+  height: 250px;
+  margin: 0 auto;
+}
+.lose{
+  text-align: center;
+  width:  70px ;
+  height: auto;
+  margin: 0, auto;
+  // width: 100%;
+}
+.hoge{
+  text-align: center;
+}
+.relative {
+  position: relative;
+
+}
+.absolute {
+  position: absolute;
+  width: 70px ;
+  height: auto;
+  left: 40%;
+  top: 50%;
+}
 
 </style>
 <template>
   <ons-page>
-    <navbar navType="blank" sg="Result"></navbar>
-    <ons-card>
-      <h3 class="center">Win!! </h3>
-      <h2 class="big"> {{ $route.params.player1 }} </h2>
+    <navbar navType="blank" msg="Result"></navbar>
+    <div v-if="$route.params.total_score1　>　$route.params.total_score2　">
+      <ons-card> 
+        <div class="relative">
+          <h1 class="center">You Win!!</h1>
+          <img :src="image" class="back">
+          <div >
+            <img :src="image_spa" class="absolute">
+          </div>
+        </div>
+      </ons-card>
+    </div>
+    <div v-else>
+      <ons-card> 
+        <h1 class="center">You Lose...</h1>
+        <v-ons-row>
+          <v-ons-col>
+            <div class="hoge">
+              <img :src="image_lose" class="lose">
+            </div>
+          </v-ons-col>
+        </v-ons-row>
+      </ons-card>
+    </div>
+    <ons-card> 
+      <h2 class="big">{{ $route.params.player1 }}</h2>
       <h3> Score:{{ $route.params.total_score1 }}</h3>
-    </ons-card>
-    <ons-card>
-      <h3 class="center">Lose... </h3>
-      <h2 class="big">{{ $route.params.player2 }}</h2>
+      <h2 class="big" style="margin-top:20px">{{ $route.params.player2 }}</h2>
       <h3> Score:{{ $route.params.total_score2 }}</h3>
     </ons-card>
 
@@ -56,8 +106,13 @@ export default {
   mounted() {
     console.log(this.$route.params.score);
   },
-  method:{
-    
-  }
+  data(){
+    return{
+      image: require('../../../images/1017085.jpg'),
+      image_spa: require('../../../images/spanyan2.png'),
+      image_lose: require('../../../images/spanyan1.png'),
+      
+    }
+  },
 };
 </script>
