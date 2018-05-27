@@ -7,7 +7,7 @@
 	vertical-align: middle;
 }
 .nyan {
-	width: 200px;
+	width: 300px;
 	/* position: absolute; */
 }
 .nyan2 {
@@ -22,10 +22,9 @@
 <template>
 	<div>
 		<v-ons-row>
-			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-80)/20)) +')' }" class="board">
+			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-256)/256)) +')' }" class="board">
 			<div class="nyan2">
-				<!-- aaa -->
-				<img :src="image_src" class="nyan">
+				<img :src="image_src" v-bind:style="{ width : size + 'px' }" class="nyan">
 			</div>
 			</v-ons-col>
 		</v-ons-row>
@@ -45,8 +44,8 @@ export default {
 		}
 	},
 	computed:{
-		red(){
-			return (this.color<255) ? 255-this.color : 0;
+		size(){
+			return (this.color>255) ? this.color-256+50 : 50;
 		},
 		green(){
 			return 255-Math.abs(255-this.color);
