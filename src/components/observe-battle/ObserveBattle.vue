@@ -12,7 +12,7 @@ import anime from "animejs"
 export default {
   props: {
     x:{
-      default: 0
+      default: 255
     }
   },
 

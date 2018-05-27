@@ -74,19 +74,22 @@ export default {
   computed: {
     judgePoint(){
       var a = this.my_score, b = this.enemy_score;
+      var point = 255 + 5 * this.judgeCounter;
       if (a > b){
         var rate = 1 - b / a
-        var point = (a/b*204)+255
       }
       else{
         var rate = 1 - a / b
-        var point = 255 - (b/a*204)
       }
       console.log(point)
       var threshold = 0.2;
       if(rate > threshold || rate < -threshold){
-        this.judgeCounter += 1;
-        if(this.judgeCounter>50 && this.isPlayer){
+        if(a>b)
+          this.judgeCounter += 1;
+        else
+          this.judgeCounter -= 1;
+
+        if(Math.abs(this.judgeCounter)>50 && this.isPlayer){
           this.stopGame();
           this.messageChannel.perform('end_game');
         }
