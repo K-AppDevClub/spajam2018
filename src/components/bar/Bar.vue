@@ -7,7 +7,7 @@
 	vertical-align: middle;
 }
 .nyan {
-	width: 200px;
+	width: 300px;
 	/* position: absolute; */
 }
 .nyan2 {
@@ -24,8 +24,7 @@
 		<v-ons-row>
 			<v-ons-col v-bind:style="{ background: 'rgba(255,0,0,'+ (1-((color-80)/20)) +')' }" class="board">
 			<div class="nyan2">
-				<!-- aaa -->
-				<img :src="image_src" class="nyan">
+				<img :src="image_src" v-bind:style="{ width : (((color-80)*5.5555)+50) + 'px' }" class="nyan">
 			</div>
 			</v-ons-col>
 		</v-ons-row>
