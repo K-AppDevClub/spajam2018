@@ -3,11 +3,14 @@ export default {
     return {
       enemy_name: "相手",
       enemy_score: 0,
+      enemy_result: "",
+      my_result: "",
       my_score: 0,
       isPlaying: false,
       isReady: false,
       isPlayer: true,
       judgeCounter: 0,
+      isResult: false,
     };
   },
   beforeDestroy() {
@@ -51,10 +54,14 @@ export default {
           }
           if(data.status=="login" && data.name != that.user_name && that.isPlayer){
             that.enemy_name = data.name
-            this.perform('start_game');
+            that.perform('start_game');
           }
           if(data.status=="start_game"){
+            that.my_result = ""
+            that.enemy_result = ""
+            that.judgeCounter = 0;
             that.isReady = true;
+            that.isResult = true
           }
           if(data.status=="end_game"){
             if(that.isPlayer){
@@ -89,12 +96,13 @@ export default {
         else
           this.judgeCounter -= 1;
 
-        if(Math.abs(this.judgeCounter)>50 && this.isPlayer){
-          this.stopGame();
-          this.messageChannel.perform('end_game');
+        if(Math.abs(this.judgeCounter)>50){
+          this.isResult = false
+          if(this.isPlayer){
+            this.stopGame();
+            this.messageChannel.perform('end_game');
+          }
         }
-      }else{
-        this.judgeCounter = 0;
       }
       return point;
     },
@@ -123,5 +131,10 @@ export default {
         this.cal_stream()
       }
     },
+    judgeCounter: function(){
+      if (this.judgeCounter > 50){
+        this.isResult = false
+      }
+    }
   }
 };

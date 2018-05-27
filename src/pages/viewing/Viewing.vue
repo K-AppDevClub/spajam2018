@@ -22,6 +22,24 @@
   <ons-page>
     <br><br>
     <navbar navType="back" backType="router" msg="観戦モード"></navbar>
+    <v-ons-card>
+    <v-ons-row>
+      <v-ons-col>
+        <h3 style="text-align:center;" :enemy_result="enemy_result"> {{ enemy_result }}</h3>
+      </v-ons-col>
+      <v-ons-col>
+        <h3 style="text-align:center;" :my_result="my_result">  {{ my_result }}</h3>
+      </v-ons-col>
+    </v-ons-row>
+    <v-ons-row>
+      <v-ons-col>
+        <h3 style="text-align:center;"> {{ enemy_name }}: {{ enemy_score }}</h3>
+      </v-ons-col>
+      <v-ons-col>
+        <h3 style="text-align:center;"> {{ user_name }}:{{ my_score }}</h3>
+      </v-ons-col>
+    </v-ons-row>
+    </v-ons-card>
     <ObserveBattle :x="judgePoint"/>
   </ons-page>
 </template>
@@ -47,6 +65,21 @@ export default {
     this.isPlayer = false;
   },
   method:{
+  },
+
+  watch:{
+      isResult: function(){
+        cosole.log("hige")
+        if (isResult) return
+        if(this.my_score > this.enemy_score){
+          console.log(this.my_score)
+          this.my_result = "Win!!"
+          this.enemy_result = "Lose..."
+        }else{
+          this.my_result = "Lose..."
+          this.enemy_result = "Win!!"
+        }
+    }
   }
 };
 </script>
