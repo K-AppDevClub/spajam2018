@@ -21,7 +21,7 @@ export default {
       preSpectrums: [],
       score: 0,
       socre_list: [],
-      rate: 0.1,
+      rate: 0.01,
 		};
 	},
 	created(){

@@ -82,10 +82,9 @@ export default {
         var rate = 1 - a / b
         var point = 255 - (b/a*204)
       }
+      console.log(point)
       var threshold = 0.2;
-      console.log(`my_score=${this.my_score}, enemy_score=${this.enemy_score}, rate=${rate}`);
-      console.log(this.judgeCounter);
-      if(rate>threshold || rate < -threshold){
+      if(rate > threshold || rate < -threshold){
         this.judgeCounter += 1;
         if(this.judgeCounter>50 && this.isPlayer){
           this.stopGame();

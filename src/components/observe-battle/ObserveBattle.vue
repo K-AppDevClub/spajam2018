@@ -108,7 +108,8 @@ export default {
 
   computed: {
     spax(){
-      return this.x * (this.width-96) / 512
+      var _x = this.x < 0 ? 0 : this.x > 512 ? 512 : this.x
+      return _x * (this.width-96) / 512
     },
   }
 }
