@@ -73,8 +73,15 @@ export default {
   },
   computed: {
     judgePoint(){
-      var rate = 1 - this.enemy_score / this.my_score;
-      var point = 256 + rate * 125;
+      var a = this.my_score, b = this.enemy_score;
+      if (a > b){
+        var rate = 1 - b / a
+        var point = (a/b*204)+255
+      }
+      else{
+        var rate = 1 - a / b
+        var point = 255 - (b/a*204)
+      }
       var threshold = 0.2;
       console.log(`my_score=${this.my_score}, enemy_score=${this.enemy_score}, rate=${rate}`);
       console.log(this.judgeCounter);
