@@ -12,7 +12,7 @@ import 'onsenui/css/onsenui.css';
 import App from './App';
 import routes from './routes';
 import tone from 'tone';
-const cable = ActionCable.createConsumer('wss:k-appdev.com:3010/cable');
+const cable = ActionCable.createConsumer('ws:k-appdev.com:3010/cable');
 
 import anime from 'animejs';
 
