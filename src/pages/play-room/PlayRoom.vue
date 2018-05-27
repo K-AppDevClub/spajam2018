@@ -22,7 +22,7 @@
         ルームID：{{room_id}}<br><br>
         <v-ons-progress-circular indeterminate></v-ons-progress-circular>
         <br><br><br><br>
-        <v-ons-button @click="$router.go(-1)" >タップしてキャンセル</v-ons-button>
+        <v-ons-button @click="$router.push({ name: 'home'});" >タップしてキャンセル</v-ons-button>
       </p>
     </v-ons-modal>
   </ons-page>
