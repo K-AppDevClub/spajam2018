@@ -45,6 +45,7 @@ export default {
   },
   mounted() {
     this.isPlayer = false;
+    this.room_id = this.$route.params.room_id;
   },
   method:{
   }
